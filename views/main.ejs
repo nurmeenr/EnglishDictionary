@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>LocationFinder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="images/logo.png" alt="logo" class="logo">
+            <span>ENDictionary</span>
+            <nav>
+                <ul>
+                    <li>
+                        <form class="form-logout" action="/logout" method="post">
+                            <input type="submit" value="LOGOUT" class="btn-logout" />
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header">
+            <h1>English Dictionary</h1>
+            <span>Simply enter a word in the box below and click "Find Definition" to get the definition</span>
+        </div>
+
+        <div class="word_field">
+            <input class="srch" type="search" placeholder="Word" id="word">
+            <button class="btn" id="search_button">Find Definition</button>
+        </div>
+
+        <div class="row">
+            <div class="content">
+                <div id="definition">
+                    <p id="definition_text"></p>
+                </div>
+                <img id="visual" src="data:," alt="illustration" />
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#search_button").on("click", function() {
+                $.ajax({
+                        url: "/request",
+                        type: "POST",
+                        data: {
+                            word: $("#word").val()
+                        }
+                    })
+                    .done(function(data) {
+                        $('#definition_text').html(data.definition);
+                        $('#visual').css('visibility', 'visible');
+                        $('#visual').attr('src', data.visual);
+                    });
+
+            })
+        })
+    </script>
+</body>
+
+</html>

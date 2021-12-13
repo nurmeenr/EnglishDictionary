@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="login-div">
+        <form class="form" action="/login" method="post">
+            <img src="images/logo.png" alt="logo">
+            <h2>Login</h2>
+            <div class="input-group">
+                <input type="text" name="loginUser" id="loginUser" required>
+                <label for="loginUser">User Name</label>
+            </div>
+            <div class="input-group">
+                <input type="password" name="loginPassword" id="loginPassword" required>
+                <label for="loginPassword">Password</label>
+            </div>
+            <input type="submit" value="Login" class="submit-btn" />
+            <p>Don't have an account? <a href="#register" class="register">Register Here</a></p>
+        </form>
+
+        <div id="register">
+            <a href="#" class="close">&times;</a>
+            <form class="form" action="/register" method="post">
+                <h2>Register Here</h2>
+                <div class="input-group">
+                    <input id="email2" name="email2" required>
+                    <label for="email2">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="loginPassword2" name="loginPassword2" required>
+                    <label for="loginPassword2">Password</label>
+                </div>
+                <input type="submit" value="Register" class="submit-btn">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
